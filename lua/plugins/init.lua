@@ -250,3 +250,18 @@ if #config.plugins > 0 then
 end
 
 require("lazy").setup(default_plugins, config.lazy_nvim)
+
+-- vim.opt.rtp:remove("/snap/nvim/2819/usr/share/nvim")
+
+-- require("lazy").setup("ecerulm.plugins", {
+--   -- https://github.com/folke/lazy.nvim
+--   performance = {
+--     rtp = {
+--       reset = false -- I need this because otherwise lazy.nvim reset the runtimepath
+--     },
+--   },
+-- 	change_detection = {
+-- 		enabled = true, -- automatically check for config file changes and reload the ui
+-- 		notify = false, -- turn off notifications whenever plugin changes are made
+-- 	},
+-- })
