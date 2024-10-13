@@ -13,6 +13,7 @@ return {
 
   performance = {
     rtp = {
+      reset = false, -- we need this to be able to remove the default parser
       disabled_plugins = {
         "2html_plugin",
         "tohtml",

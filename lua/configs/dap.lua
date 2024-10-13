@@ -39,3 +39,70 @@ require('dap-go').setup {
     detached = true
   },
 }
+
+local dap = require("dap")
+dap.adapters.codelldb = {
+  type = "executable",
+  command = "codelldb",
+  args = { "--interpreter=dap", "-q", "-i", "dap", "--eval-command", "set print pretty on" }
+}
+
+dap.configurations.cpp = {
+  {
+    name = "Launch",
+    type = "codelldb",
+    request = "launch",
+    program = function()
+      local build = vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+      dap.repl.open()
+      return build
+    end,
+    cwd = "${workspaceFolder}",
+    runInTerminal = true,
+    stopAtBeginningOfMainSubprogram = true,
+  },
+  {
+    name = "Select and attach to process",
+    type = "codelldb",
+    request = "attach",
+    program = function()
+       return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
+    pid = function()
+       local name = vim.fn.input('Executable name (filter): ')
+       return require("dap.utils").pick_process({ filter = name })
+    end,
+    stopOnEntry = true,
+    cwd = '${workspaceFolder}'
+  },
+  {
+    name = 'Attach to codelldbserver :1234',
+    type = 'codelldb',
+    request = 'attach',
+    target = 'localhost:1234',
+    program = function()
+       return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
+    stopOnEntry = true,
+    cwd = '${workspaceFolder}'
+  },
+}
+
+dap.configurations.c = dap.configurations.cpp
+dap.configurations.rust = dap.configurations.cpp
+
+--- signs
+-- look at https://github.com/mfussenegger/nvim-dap/blob/master/lua/dap.lua#L397
+local signs = {
+  DapBreakpoint = { text = "●", texthl = "CursorLineNr", linehl = "", numhl = "" },
+  DapBreakpointCondition = { text = "C", texthl = "CursorLineNr", linehl = "", numhl = "" },
+  DapBreakpointRejected = { text = 'R', texthl = "CursorLineNr", linehl = '', numhl = '' },
+  DapLogPoint = { text = 'L', texthl = "CursorLineNr", linehl = '', numhl = '' },
+  DapStopped = { text = '▶', texthl = "CursorLineNr", linehl = 'debugPC', numhl = '' },
+}
+
+for key, val in pairs(signs) do
+  if val ~= nil then
+    vim.fn.sign_define(key, val)
+  end
+end
