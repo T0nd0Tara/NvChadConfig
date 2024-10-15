@@ -104,7 +104,25 @@ local plugins = {
          mappings = {}
       }
     end
-  }
+  },
+  {
+    'vidocqh/data-viewer.nvim',
+    opts = {},
+    lazy = false,
+    config = {
+      autoDisplayWhenOpenFile = false,
+      columnColorRoulette = {
+        "NormalFloat"
+      },
+      view = {
+        float = true
+      }
+    },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "kkharji/sqlite.lua", -- Optional, sqlite support
+    }
+  },
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
