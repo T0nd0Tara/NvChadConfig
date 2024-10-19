@@ -18,6 +18,7 @@ map("n", "<leader>dr", "<cmd> lua require'dap'.repl.open() <CR>", { desc = "Open
 
 map("n", "<leader>dv", "<cmd> DataViewer <CR>", { desc = "Open Data Viewer"})
 
+
 map("v", ">", ">gv", { desc = "indent"})
 map("v", "<", "<gv", { desc = "indent"})
 
