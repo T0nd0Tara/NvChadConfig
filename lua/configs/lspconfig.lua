@@ -1,22 +1,24 @@
-local on_attach = require("nvchad.configs.lspconfig").on_attach
-local capabilities = require("nvchad.configs.lspconfig").capabilities
+-- load defaults i.e lua_lsp
+require("nvchad.configs.lspconfig").defaults()
 
 local lspconfig = require "lspconfig"
+
+local nvlsp = require "nvchad.configs.lspconfig"
 
 -- if you just want default config for the servers then put them in a table
 local servers = { "html", "cssls", "ts_ls", "clangd", "pyright", "lua_ls" }
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
+    on_attach = nvlsp.on_attach,
+    on_init = nvlsp.on_init,
+    capabilities = nvlsp.capabilities,
   }
 end
 
--- lspconfig.clangd.setup {
---   init_options = {
---     fallbackFlags = {'--std=c++20'}
---   },
+-- configuring single server, example: typescript
+-- lspconfig.ts_ls.setup {
+--   on_attach = nvlsp.on_attach,
+--   on_init = nvlsp.on_init,
+--   capabilities = nvlsp.capabilities,
 -- }
--- 
--- lspconfig.pyright.setup { blabla}
