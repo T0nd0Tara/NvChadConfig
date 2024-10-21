@@ -155,3 +155,11 @@ let g:mkdp_combine_preview = 0
 " auto refetch combine preview contents when change markdown buffer
 " only when g:mkdp_combine_preview is 1
 let g:mkdp_combine_preview_auto_refresh = 1
+
+" --------------- PLUGINS ---------------
+call plug#begin()
+
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+
+call plug#end()
