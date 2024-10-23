@@ -39,8 +39,6 @@ local plugins = {
     "nvim-tree/nvim-tree.lua",
     opts = overrides.nvimtree,
   },
-
-  -- Install a plugin
   {
     "max397574/better-escape.nvim",
     event = "InsertEnter",
@@ -49,18 +47,11 @@ local plugins = {
     end,
   },
 
-  {
-    "stevearc/conform.nvim",
-    --  for users those who want auto-save conform + lazyloading!
-    -- event = "BufWritePre"
-    config = function()
-      require "configs.conform"
-    end,
-  },
   add_plugin('markdown-preview'),
   add_plugin('marks'),
   add_plugin('data-viewer'),
   add_plugin('lsp-lens'),
+  add_plugin('gitsigns'),
 }
 
 

@@ -15,10 +15,10 @@ return {
       width = 0.5,
       height = 0.5,
       relative = true,
-    }
+    },
   },
   dependencies = {
     "nvim-lua/plenary.nvim",
     "kkharji/sqlite.lua", -- Optional, sqlite support
-  }
+  },
 }
