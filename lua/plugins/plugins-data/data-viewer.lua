@@ -14,7 +14,7 @@ return {
       float = true,
       width = 0.5,
       height = 0.5,
-      relative = true,
+      relative = false,
     },
   },
   dependencies = {
