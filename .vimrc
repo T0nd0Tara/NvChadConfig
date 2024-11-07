@@ -44,7 +44,7 @@ set foldlevel=2
 
 set clipboard=unnamedplus
 
-set timeoutlen=100
+set timeoutlen=200
 
 " Markdown
 " set to 1, nvim will open the preview window after entering the Markdown buffer
