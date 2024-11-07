@@ -14,6 +14,12 @@ map("n", "<leader>ff", "<cmd> Telescope find_files <CR>", { desc = "Find Files" 
 map("n", "<leader>gc", "<cmd> Telescope git_branches <CR>", { desc = "Git Checkout" })
 map("n", "<leader>gd", "<cmd> Telescope git_status <CR>", { desc = "Git Diff" })
 
+-- Git
+map("n", "<leader>go", function()
+    local message = vim.fn.input("Enter message: ")
+    vim.cmd('! git commit -m "' .. message .. '"')
+  end, { desc = "Git Commit"})
+
 -- Debug
 map("n", "<leader>db", "<cmd> lua require'dap'.toggle_breakpoint() <CR>", { desc = "Toggle Breakpint" })
 map("n", "<leader>dd", "<cmd> lua require'dap'.continue() <CR>", { desc = "Start Debugger" })
@@ -26,5 +32,3 @@ map("n", "<leader>dv", "<cmd> DataViewer <CR>", { desc = "Open Data Viewer" })
 
 map("v", ">", ">gv", { desc = "indent" })
 map("v", "<", "<gv", { desc = "indent" })
-
-return M
