@@ -19,6 +19,20 @@ map("n", "<leader>go", function()
     local message = vim.fn.input("Enter message: ")
     vim.cmd('! git commit -m "' .. message .. '"')
   end, { desc = "Git Commit"})
+map("n", "<leader>ga", function()
+    local curr_file = vim.api.nvim_buf_get_name(0)
+    vim.cmd('! git add ' .. curr_file)
+  end, { desc = "Git Add"})
+
+map("n", "<leader>gA", function()
+    -- TODO: 'file_in_path' works only on the first file, fix it with a custom function
+    vim.ui.input({ prompt = "Enter Files: ", completion="file_in_path"}, function(files) 
+      if files == '' then return end
+
+      files = files or "."
+      vim.cmd('! git add ' .. files)
+    end)
+  end, { desc = "Git Add Multiple Files"})
 
 -- Debug
 map("n", "<leader>db", "<cmd> lua require'dap'.toggle_breakpoint() <CR>", { desc = "Toggle Breakpint" })

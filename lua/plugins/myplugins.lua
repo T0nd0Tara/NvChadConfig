@@ -52,6 +52,9 @@ local plugins = {
   add_plugin('data-viewer'),
   add_plugin('lsp-lens'),
   add_plugin('gitsigns'),
+  add_plugin('neogit'),
+  add_plugin('profile'),
+  add_plugin('align'),
 }
 
 
