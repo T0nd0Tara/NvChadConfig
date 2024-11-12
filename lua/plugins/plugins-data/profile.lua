@@ -274,7 +274,7 @@ return {
         empty_char = " ",
         full_char = { "", "󰧞", "", "", "" },
         fake_contributions = nil,
-        non_official_api_cmd = [[curl -s "https://github-contributions-api.jogruber.de/v4/%s?y=$(date -d "1 year ago" +%%Y)&y=$(date +%%Y)" | jq '.contributions' | jq --arg start $(date -d "1 year ago" +%%Y-%%m-%%d) --arg end $(date +%%Y-%%m-%%d) '.[] | select((.date >= $start) and (.date <= $end))' | jq -s 'sort_by(.date) | map(.level) | . as $array | reduce range(0; length; 7) as $i ({}; . + {($i/7+1 | tostring): $array[$i:$i+7] })']],
+        non_official_api_cmd = [[sh ~/.config/nvim/scripts/get_github_contributions.sh %s]],
 
       },
       hide = {

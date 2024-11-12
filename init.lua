@@ -25,6 +25,7 @@ require("lazy").setup({
   { import = "plugins" },
 }, lazy_config)
 
+math.randomseed(os.time())
 
 -- load theme
 dofile(vim.g.base46_cache .. "defaults")
