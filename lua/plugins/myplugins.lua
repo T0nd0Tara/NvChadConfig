@@ -55,6 +55,7 @@ local plugins = {
   add_plugin('neogit'),
   add_plugin('profile'),
   add_plugin('align'),
+  add_plugin('timerly'),
 }
 
 
