@@ -34,6 +34,11 @@ map("n", "<leader>gA", function()
     end)
   end, { desc = "Git Add Multiple Files"})
 
+-- Run
+map("n", "<leader>rc", require('runner').run, { desc = "Run Current File"})
+map("n", "<leader>ru", require('runner').autorun, { desc = "Run every Update"})
+map("n", "<leader>rs", require('runner').autorun_stop, { desc = "Stop Update Run"})
+
 -- Debug
 map("n", "<leader>db", "<cmd> lua require'dap'.toggle_breakpoint() <CR>", { desc = "Toggle Breakpint" })
 map("n", "<leader>dd", "<cmd> lua require'dap'.continue() <CR>", { desc = "Start Debugger" })
