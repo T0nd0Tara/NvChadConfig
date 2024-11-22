@@ -33,7 +33,7 @@ end
 
 M.ui = {
   statusline = {
-   order = { "mode", "file_path","git", "%=", "clock", "%=", "lsp_msg", "lsp", "cwd"},
+   order = { "mode", "file_path","git", "%=", "lsp_msg", "%=", "lsp", "cwd"},
     modules = {
       clock = "%{strftime('%c')}",
       file_path = function()
